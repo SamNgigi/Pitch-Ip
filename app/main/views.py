@@ -4,6 +4,7 @@ from .forms import UpdateProfile  # CommentForm
 from ..models import User  # Comment,
 from flask_login import login_required
 from .. import db, photos
+from ..pitches import get_pitches
 
 
 @main.route('/')
@@ -11,7 +12,8 @@ def index():
     """
     Function that renders the index.html and its content
     """
-    return render_template('index.html')
+    pitches = get_pitches()
+    return render_template('index.html', pitches=pitches)
 
 
 @main.route('/user/<uname>')

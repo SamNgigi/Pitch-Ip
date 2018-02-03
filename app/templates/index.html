@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% import 'macros.html' as macro %}
 
 <!-- Styles block -->
 {% block styles %}
@@ -10,4 +10,7 @@
 <!-- Content block -->
 {% block content %}
   <h3>Working!</h3>
+  <ul>
+    {{macro.displayPitchList(pitches)}}
+  </ul>
 {% endblock %}

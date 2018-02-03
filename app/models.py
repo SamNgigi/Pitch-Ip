@@ -5,6 +5,24 @@ from . import login_manager
 from datetime import datetime
 
 
+class Pitch(db.Model):  # (db.Model)
+    """
+    Defining the pitch object
+    """
+    __tablename__ = 'pitches'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    all_pitches = []
+
+    def __init__(self, id, title, body, author, category):
+        self.id = id
+        self.title = title
+        self.body = body
+        self.author = author
+        self.category = category
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -17,14 +35,7 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    # pass
-
-
-# class Pitch(db.Model):
-#     """
-#     Defining the pitch object
-#     """
-#     pass
+    pass
 
 
 # class Review(db.Model):
