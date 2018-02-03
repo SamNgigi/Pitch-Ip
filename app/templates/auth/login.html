@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <form method="POST" action="/">
+    <div class="row mt-3">
+      {{login_form.email.label}}
+    </div>
+    <div class="row">
+      {{login_form.hidden_tag()}} {{login_form.email(class_='form-control', placeholder="Enter email")}}
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="row mt-3">
+      {{login_form.password.label}}
+    </div>
+    <div class="row">
+      {{login_form.hidden_tag()}} {{login_form.password(class_='form-control', placeholder="Password")}}
+    </div>
+    <div class="row ml-1 mt-3">
+      {{login_form.hidden_tag()}}
+      {{login_form.remember.label}}
+      {{login_form.remember(class_='form-check-input')}}
+    </div>
+    <div class="row">
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+    </div>
+    <div class="row mt-3">
+      <p>Do you have an account?<a href="{{url_for('auth.register')}}">  Sign up here.</a></p>
+    </div>
+  </form>
+</div>
+
+
+{% endblock %}

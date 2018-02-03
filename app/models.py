@@ -17,18 +17,18 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    pass
+    # pass
 
 
-class Pitch(db.Model):
-    """
-    Defining the pitch object
-    """
-    pass
+# class Pitch(db.Model):
+#     """
+#     Defining the pitch object
+#     """
+#     pass
 
 
-class Review(db.Model):
-    """
-    Defining the review object
-    """
-    pass
+# class Review(db.Model):
+#     """
+#     Defining the review object
+#     """
+#     pass
