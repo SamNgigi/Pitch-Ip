@@ -7,7 +7,6 @@
     </div>
     <div class="row">
       {{login_form.hidden_tag()}} {{login_form.email(class_='form-control', placeholder="Enter email")}}
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="row mt-3">
       {{login_form.password.label}}
@@ -21,7 +20,8 @@
       {{login_form.remember(class_='form-check-input')}}
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
+      {{login_form.hidden_tag()}}
+      {{login_form.submit(class_="btn btn-outline-primary")}}
     </div>
     <div class="row mt-3">
       <p>Do you have an account?<a href="{{url_for('auth.register')}}">  Sign up here.</a></p>
