@@ -14,7 +14,9 @@ def get_pitches():
      A great lead for me is a trade professional.
      """,
                       'Improv Andy',
-                      'Business')
+                      'Business',
+                      0,
+                      0)
     pitch_two = Pitch(1, 'Research Job Pitch',
                       """
                     Hi, my name is Samantha Atcheson, and I am a senior Environmental Sciences major. I’m looking for a
@@ -25,7 +27,17 @@ conservation awareness. I read that your organization is involved in water quali
 me how someone with my experience may fit into your organization?
                     """,
                       'Samantha Atcheson',
-                      'Science')
+                      'Science',
+                      0,
+                      0)
+    pitch_three = Pitch(2, 'Small Business',
+                        """
+                        I'm a lawyer with the government, based out of D.C. I grew up in Ohio, though, and I'm looking to relocate closer to my roots, and join a family-friendly firm. I specialize in labor law, and worked for ABC firm before joining the government.
+                        """,
+                        'Sarah',
+                        'Business',
+                        0,
+                        0)
 
-    pitch_list.extend((pitch_one, pitch_two))
+    pitch_list.extend((pitch_one, pitch_two, pitch_three))
     return pitch_list

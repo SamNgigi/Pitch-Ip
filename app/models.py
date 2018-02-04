@@ -15,12 +15,14 @@ class Pitch(db.Model):  # (db.Model)
 
     all_pitches = []
 
-    def __init__(self, id, title, body, author, category):
+    def __init__(self, id, title, body, author, category, upvotes, downvotes):
         self.id = id
         self.title = title
         self.body = body
         self.author = author
         self.category = category
+        self.upvotes = upvotes
+        self.downvotes = downvotes
 
 
 @login_manager.user_loader

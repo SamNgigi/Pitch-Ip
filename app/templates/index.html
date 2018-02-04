@@ -1,16 +1,14 @@
-{% extends 'base.html' %}
-{% import 'macros.html' as macro %}
+{% extends 'base.html' %} {% import 'macros.html' as macro %}
 
 <!-- Styles block -->
-{% block styles %}
-
-{% endblock %}
+{% block styles %} {% endblock %}
 
 
 <!-- Content block -->
 {% block content %}
-  <h3>Working!</h3>
-  <ul>
-    {{macro.displayPitchList(pitches)}}
-  </ul>
+<div class="container-fluid mt-3">
+  <div class="row">
+      {{macro.displayPitchList(pitches)}}
+  </div>
+</div>
 {% endblock %}
