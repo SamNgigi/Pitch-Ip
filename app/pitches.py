@@ -41,3 +41,12 @@ me how someone with my experience may fit into your organization?
 
     pitch_list.extend((pitch_one, pitch_two, pitch_three))
     return pitch_list
+
+
+def get_pitch(category):
+    pitches = get_pitches()
+    category_list = []
+    for pitch in pitches:
+        if pitch.category == 'category':
+            category_list.append(pitch)
+    return pitch

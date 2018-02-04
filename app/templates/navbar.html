@@ -1,3 +1,4 @@
+ {% import 'macros.html' as macro %}
 <nav class="navbar navbar-expand-lg navbar-light" style="background:linear-gradient(-90deg, #00ccff, #00ffff, #00ccff);">
   <a class="navbar-brand" href="/">Pitch</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +18,7 @@
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#netWorking">Business Networking</a>
+          <a class="dropdown-item" href="/category/{{pitch.category}}">Business Networking</a>
           <a class="dropdown-item" href="#jobs">Job Seeker</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Mans Not Hot</a>
