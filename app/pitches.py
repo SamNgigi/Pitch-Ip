@@ -3,7 +3,7 @@ from .models import Pitch
 
 def get_pitches():
     pitch_list = []
-    pitch_one = Pitch(0, 'Elevator Pitch Example for an Professional Accountant',
+    pitch_one = Pitch(1, 'Elevator Pitch Example for an Professional Accountant',
                       """
      A plumber approached me because while he’s a very good plumber he had no idea how to improve the profitability of his business.
 
@@ -17,7 +17,7 @@ def get_pitches():
                       'Business',
                       1,
                       0)
-    pitch_two = Pitch(1, 'Research Job Pitch',
+    pitch_two = Pitch(2, 'Research Job Pitch',
                       """
                     Hi, my name is Samantha Atcheson, and I am a senior Environmental Sciences major. I’m looking for a
 position that will allow me to use my research and analysis skills. Over the past few years, I’ve been
@@ -30,7 +30,7 @@ me how someone with my experience may fit into your organization?
                       'Science',
                       3,
                       0)
-    pitch_three = Pitch(2, 'Small Business',
+    pitch_three = Pitch(3, 'Small Business',
                         """
                         I'm a lawyer with the government, based out of D.C. I grew up in Ohio, though, and I'm looking to relocate closer to my roots, and join a family-friendly firm. I specialize in labor law, and worked for ABC firm before joining the government.
                         """,

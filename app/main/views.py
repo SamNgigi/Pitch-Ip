@@ -13,6 +13,7 @@ def index():
     Function that renders the index.html and its content
     """
     pitches = get_pitches()
+    print(pitches)
     return render_template('index.html', pitches=pitches)
 
 
