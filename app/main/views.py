@@ -16,6 +16,11 @@ def index():
     return render_template('index.html', pitches=pitches)
 
 
+@main.route('/update', methods=['POST'])
+def update():
+    pass
+
+
 @main.route('/user/<uname>')
 @login_required
 def profile(uname):

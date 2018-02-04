@@ -15,7 +15,7 @@ def get_pitches():
      """,
                       'Improv Andy',
                       'Business',
-                      0,
+                      1,
                       0)
     pitch_two = Pitch(1, 'Research Job Pitch',
                       """
@@ -28,7 +28,7 @@ me how someone with my experience may fit into your organization?
                     """,
                       'Samantha Atcheson',
                       'Science',
-                      0,
+                      3,
                       0)
     pitch_three = Pitch(2, 'Small Business',
                         """

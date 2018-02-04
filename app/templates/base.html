@@ -8,6 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   <title>Welcome to Pitch</title>
   <!-- Base Styles -->
@@ -20,24 +21,48 @@
     * {
       font-family: 'Montserrat', sans-serif;
     }
-    .rounded{
+
+    .rounded {
       border-radius: 50%;
     }
   </style>
+
+  <script type="text/javascript">
+    var voteClicks = function (votes) {
+      return votes += 1
+    }
+    $(document).ready(function() {
+      $(document).on('click', '.btn', function() {
+        var btn_id = $(this).attr('btn_id')
+        // console.log(btn_id);
+        var votes = $('#pitch'+ btn_id).text()
+        // console.log(votes);
+        var int_votes = parseInt(votes)
+        var new_votes=voteClicks(int_votes).toString()
+        console.log(new_votes);
+        // console.log(voteClicks(int_votes));
+        req = $.ajax({
+          url: '/update',
+          type: 'POST',
+          data: {votes:votes}
+        });
+        req.done(function(data){
+
+        });
+      });
+    });
+  </script>
+
 </head>
 
 <body>
   <!-- Nav block -->
-  {% block navbar %}
-    {% include 'navbar.html' %}
-  {% endblock %}
+  {% block navbar %} {% include 'navbar.html' %} {% endblock %}
   <!-- Content block -->
-  {% block content %}
-
-  {% endblock %}
+  {% block content %} {% endblock %}
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>

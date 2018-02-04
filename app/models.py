@@ -12,6 +12,8 @@ class Pitch(db.Model):  # (db.Model)
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer, primary_key=True)
+    upvotes = db.Column(db.Integer)
+    downvotes = db.Column(db.Integer)
 
     all_pitches = []
 
