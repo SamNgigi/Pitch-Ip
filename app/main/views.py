@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, abort
 from . import main
-from .forms import PitchForm, CommentForm  # CommentForm  UpdateProfile,
-from ..models import User, Pitch  # Comment,
+from .forms import PitchForm, CommentForm  # UpdateProfile
+from ..models import User, Pitch, Comment
 from flask_login import login_required, current_user
 from .. import db, photos
 # from ..pitches import get_pitches, get_pitch
@@ -64,16 +64,12 @@ def comment(id):
     comment_form = CommentForm()
     pitch = Pitch.query.get(id)
     if comment_form.validate_on_submit():
-        comment = comment_form.body.data
-        author = comment_form.author.data
+        title = comment_form.title.data
+        comment = comment_form.comment.data
         # category=category
-        new_comment = Pitch(pitch_id=pitch.id,
-                            pitch_title=pitch.title,
-                            pitch_body=pitch.body,
-                            pitch_author=pitch.author,
-                            comment=comment,
-                            author=author,
-                            user=current_user)
+        new_comment = Comment(comment=comment,
+                              title=title,
+                              user=current_user)
         new_comment.save_comment()
         return redirect(url_for('main.index'))
 
