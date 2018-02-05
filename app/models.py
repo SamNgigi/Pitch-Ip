@@ -62,8 +62,8 @@ class Comment(db.Model):  # (db.Model)
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String)
     comment = db.Column(db.String)
-    author = db.Column(db.String)
 
     # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
@@ -79,11 +79,12 @@ class Comment(db.Model):  # (db.Model)
     all_comments = []
 
     def __init__(self,
+                 title,
                  comment,
-                 author):
+                 user):
+        self.title = title
         self.comment = comment
-        self.author = author
-        # self.user = user
+        self.user = user
 
 
 @login_manager.user_loader

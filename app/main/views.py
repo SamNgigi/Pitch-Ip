@@ -64,20 +64,20 @@ def comment(id):
     comment_form = CommentForm()
     pitch = Pitch.query.get(id)
     if comment_form.validate_on_submit():
-        content = comment_form.body.data
+        comment = comment_form.body.data
         author = comment_form.author.data
         # category=category
         new_comment = Pitch(pitch_id=pitch.id,
                             pitch_title=pitch.title,
                             pitch_body=pitch.body,
                             pitch_author=pitch.author,
-                            content=content,
+                            comment=comment,
                             author=author,
                             user=current_user)
         new_comment.save_comment()
         return redirect(url_for('main.index'))
 
-    return render_template('comment.html', comment_form=comment_form)
+    return render_template('comment.html', comment_form=comment_form, pitch=pitch)
 
 
 @main.route('/update/<int:id>', methods=['POST'])
@@ -99,25 +99,19 @@ def profile(uname):
     return render_template("profile/profile.html", user=user)
 
 
-@main.route('/user/<uname>/update', methods=['GET', 'POST'])
-@login_required
-def update_profile(uname):
-    user = User.query.filter_by(username=uname).first()
-
-    if user is None:
-        abort(404)
-
-    form = UpdateProfile()
-
-    if form.validate_on_submit():
-        user.bio = form.bio.data
-
-        db.session.add(user)
-        db.session.commit()
-
-        return redirect(url_for('.profile', uname=user.username))
-
-    return render_template('profile/update.html', form=form)
+# @main.route('/user/<uname>/update', methods=['GET', 'POST'])
+# @login_required
+# def update_profile(uname):
+#     user = User.query.filter_by(username=uname).first()
+#     if user is None:
+#         abort(404)
+#     form = UpdateProfile()
+#     if form.validate_on_submit():
+#         user.bio = form.bio.data
+#         db.session.add(user)
+#         db.session.commit()
+#         return redirect(url_for('.profile', uname=user.username))
+#     return render_template('profile/update.html', form=form)
 
 
 @main.route('/user/<uname>/update/pic', methods=['POST'])

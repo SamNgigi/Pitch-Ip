@@ -1,45 +1,41 @@
-{% extends 'base.html' %}
-{% block styles %}
-  {{super()}}
-  <!-- Importing simple mde css and js files  -->
-  {{simple.css}}
-  {{simple.js}}
-{% endblock %}
-
-
-{% block content %}
-<div class="container">
-  <p>Write a pitch</p>
-  <form action method="post" class='form' role='form'>
-    <div class="row mt-3">
-      {{comment_form.title.label}}
+{% extends 'base.html' %} {% block styles %} {{super()}}
+<!-- Importing simple mde css and js files  -->
+{{simple.css}} {{simple.js}} {% endblock %} {% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6">
+      <div class="card m-3">
+        <div class="card-header">
+          {{pitch.title}}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{pitch.body}}</p>
+            <footer class="blockquote-footer"><cite title="Source Title">{{pitch.author}}</cite></footer>
+          </blockquote>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      {{comment_form.hidden_tag()}} {{comment_form.title(class_='form-control', placeholder="Enter title")}}
-    </div>
-    <div class="row mt-3">
-      {{comment_form.body.label}}
-    </div>
-    <div class="row">
-      {{comment_form.hidden_tag()}} {{comment_form.body(class_='form-control', placeholder="Your Pitch")}}
+    <div class="col-xs-6 col-sm-6 col-md-6">
+      <form action method="post" class='form' role='form'>
+        <div class="row mt-3">
+          {{comment_form.title.label}}
+        </div>
+        <div class="row">
+          {{comment_form.hidden_tag()}} {{comment_form.title(class_='form-control')}}
+        </div>
+        <div class="row mt-3">
+          {{comment_form.comment.label}}
+        </div>
+        <div class="row">
+          {{comment_form.hidden_tag()}} {{comment_form.comment(class_='form-control', placeholder="Tell us what you think")}} {{ simplemde.load }}
+        </div>
+        <div class="row mt-3">
+          {{comment_form.submit(class_="btn btn-outline-primary")}}
+        </div>
+      </form>
       {{ simplemde.load }}
     </div>
-    <div class="row mt-3">
-      {{comment_form.author.label}}
-    </div>
-    <div class="row">
-      {{comment_form.hidden_tag()}} {{comment_form.author(class_='form-control', placeholder="Who is the author?")}}
-    </div>
-    <div class="row mt-3">
-      {{comment_form.category.label}}
-    </div>
-    <div class="row form-check form-check-inline ">
-      {{comment_form.hidden_tag()}} {{comment_form.category(class_='form-check-input')}}
-    </div>
-    <div class="row">
-      {{comment_form.submit(class_="btn btn-outline-primary")}}
-    </div>
-  </form>
-  {{ simplemde.load }}
+  </div>
 </div>
 {% endblock %}

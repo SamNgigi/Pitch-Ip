@@ -6,7 +6,7 @@ from wtforms.validators import Required
 
 class PitchForm(FlaskForm):
     title = StringField('Pitch Title', validators=[Required()])
-    body = TextAreaField('Enter your pitch here', validators=[Required()])
+    body = TextAreaField('Enter your comment here', validators=[Required()])
     author = StringField('Author', validators=[Required()])
     category = RadioField('Pick Category',
                           choices=[('business', 'business'),
@@ -16,8 +16,8 @@ class PitchForm(FlaskForm):
 
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField('Enter your pitch here', validators=[Required()])
-    author = StringField('Author', validators=[Required()])
+    title = StringField('Title', validators=[Required()])
+    comment = TextAreaField('Comment', validators=[Required()])
     submit = SubmitField('Submit')
 
 
