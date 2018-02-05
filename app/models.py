@@ -55,6 +55,37 @@ class Pitch(db.Model):  # (db.Model)
         # self.user = user
 
 
+class Comment(db.Model):  # (db.Model)
+    """
+    Defining the pitch object
+    """
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String)
+    author = db.Column(db.String)
+
+    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    def save_comments(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls):
+        comments = Comment.query.all()
+        return comments
+
+    all_comments = []
+
+    def __init__(self,
+                 comment,
+                 author):
+        self.comment = comment
+        self.author = author
+        # self.user = user
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))

@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, RadioField
 from wtforms.validators import Required
-from ..models import Pitch
+# from ..models import Pitch
 
 
 class PitchForm(FlaskForm):
@@ -12,6 +12,12 @@ class PitchForm(FlaskForm):
                           choices=[('business', 'business'),
                                    ('jobs', 'jobs')],
                           validators=[Required()])
+    submit = SubmitField('Submit')
+
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField('Enter your pitch here', validators=[Required()])
+    author = StringField('Author', validators=[Required()])
     submit = SubmitField('Submit')
 
 

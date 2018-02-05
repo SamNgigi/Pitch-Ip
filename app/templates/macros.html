@@ -7,6 +7,8 @@
     <div class="card-body">
       <h5 class="card-title">{{pitch.title}}</h5>
       <p class="card-text">{{pitch.body}}</p>
+      <hr>
+      <p>Add a comment <a href="/comment">here</a>.</p>
       <p class="card-text"><small class="text-muted">{{pitch.author}}</small></p>
       <form methods='POST' action="/update">
         <a href="#" id="pitch{{pitch.id}}" class="btn btn-primary btn-lg" btn_id="{{(pitch.id)}}"><i class="far fa-hand-point-up mr-2"></i>{{pitch.upvotes}}</a>
