@@ -4,7 +4,7 @@ from .forms import UpdateProfile  # CommentForm
 from ..models import User  # Comment,
 from flask_login import login_required
 from .. import db, photos
-from ..pitches import get_pitches, get_pitch
+# from ..pitches import get_pitches, get_pitch
 
 
 @main.route('/')
@@ -13,19 +13,21 @@ def index():
     Function that renders the index.html and its content
     """
 
-    pitches = get_pitches()
-    pitch = get_pitch('Business')
-    return render_template('index.html', pitches=pitches, pitch=pitch)
 
-
-@main.route('/category/<category>')
-def category(category):
+@main.route('/business/<category>')
+def business(category):
     """
     Function that renders the index.html and its content
     """
-    pitch = get_pitch('Business')
 
-    return render_template('category.html', pitch=pitch)
+
+@main.route('/jobs/<category>')
+def jobs(category):
+    """
+    Function that renders the index.html and its content
+    """
+    # TODO: comiit all from data base. query by categoty
+    # TODO: add simple mde to comment and add new pitch
 
 
 @main.route('/update/<int:id>', methods=['POST'])
