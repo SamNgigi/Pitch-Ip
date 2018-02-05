@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block styles %}
+  {{super()}}
+  <!-- Importing simple mde css and js files  -->
+  {{simple.css}}
+  {{simple.js}}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <p>Write a pitch</p>
+  <form action method="post" class='form' role='form'>
+    <div class="row mt-3">
+      {{comment_form.title.label}}
+    </div>
+    <div class="row">
+      {{comment_form.hidden_tag()}} {{comment_form.title(class_='form-control', placeholder="Enter title")}}
+    </div>
+    <div class="row mt-3">
+      {{comment_form.body.label}}
+    </div>
+    <div class="row">
+      {{comment_form.hidden_tag()}} {{comment_form.body(class_='form-control', placeholder="Your Pitch")}}
+      {{ simplemde.load }}
+    </div>
+    <div class="row mt-3">
+      {{comment_form.author.label}}
+    </div>
+    <div class="row">
+      {{comment_form.hidden_tag()}} {{comment_form.author(class_='form-control', placeholder="Who is the author?")}}
+    </div>
+    <div class="row mt-3">
+      {{comment_form.category.label}}
+    </div>
+    <div class="row form-check form-check-inline ">
+      {{comment_form.hidden_tag()}} {{comment_form.category(class_='form-check-input')}}
+    </div>
+    <div class="row">
+      {{comment_form.submit(class_="btn btn-outline-primary")}}
+    </div>
+  </form>
+  {{ simplemde.load }}
+</div>
+{% endblock %}
