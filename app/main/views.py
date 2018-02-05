@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, abort
 from . import main
-from .forms import UpdateProfile  # CommentForm
+from .forms import PitchForm  # CommentForm  UpdateProfile,
 from ..models import User, Pitch  # Comment,
 from flask_login import login_required
 from .. import db, photos
@@ -20,7 +20,7 @@ def index():
 @main.route('/business')
 def business():
     """
-    Function that renders the index.html and its content
+    Function that renders the business category pitches and its content
     """
     business_pitch = Pitch.query.filter_by(category='business').all()
 
@@ -30,13 +30,31 @@ def business():
 @main.route('/jobs')
 def jobs():
     """
-    Function that renders the index.html and its content
+    Function that renders the job category pitches and its content
     """
-    # TODO: comiit all from data base. query by categoty
-    # TODO: add simple mde to comment and add new pitch
+
     jobs_pitch = Pitch.query.filter_by(category='jobs').all()
 
     return render_template('jobs.html', jobs=jobs_pitch)
+
+
+@main.route('/new')
+@login_required
+def new():
+    pitch_form = PitchForm()
+
+    if pitch_form.validate_on_submit():
+        title = pitch_form.title.data
+        body = pitch_form.body.data
+        author = pitch_form.author.data
+        category = pitch_form.category.data
+        # category=category
+        new_pitch = Pitch(title=title, body=body,
+                          author=author, category=category)
+        new_pitch.save_review()
+        return redirect(url_for('.index'))
+
+    return render_template('new.html', pitch_form=pitch_form)
 
 
 @main.route('/update/<int:id>', methods=['POST'])

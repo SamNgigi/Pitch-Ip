@@ -9,6 +9,8 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sam:Sam@localhost/pitch_ip'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
+    SIMPLEMDE_JS_IIFE = True
+    SIMPLE_USE_CDN = True
 
 
 class ProdConfig(Config):

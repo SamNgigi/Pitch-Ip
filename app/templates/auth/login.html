@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-  <form method="POST" action="/">
+  <form action method="post" class='form' role='form'>
     <div class="row mt-3">
       {{login_form.email.label}}
     </div>
@@ -20,7 +20,6 @@
       {{login_form.remember(class_='form-check-input')}}
     </div>
     <div class="row">
-      {{login_form.hidden_tag()}}
       {{login_form.submit(class_="btn btn-outline-primary")}}
     </div>
     <div class="row mt-3">

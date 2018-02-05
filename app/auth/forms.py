@@ -5,13 +5,6 @@ from ..models import User
 from wtforms import ValidationError
 
 
-class LoginForm(FlaskForm):
-    email = StringField('Email Address', validators=[Required(), Email()])
-    password = PasswordField('Password', validators=[Required()])
-    remember = BooleanField('Remember me')
-    submit = SubmitField('Sign In')
-
-
 class RegistrationForm(FlaskForm):
     email = StringField('Email Address', validators=[Required(), Email()])
     username = StringField('Enter your username', validators=[Required()])
@@ -28,3 +21,10 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, data_field):
         if User.query.filter_by(username=data_field.data).first():
             raise ValidationError('That username is taken. Try another one')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email Address', validators=[Required(), Email()])
+    password = PasswordField('Password', validators=[Required()])
+    remember = BooleanField('Remember me')
+    submit = SubmitField('Sign In')
