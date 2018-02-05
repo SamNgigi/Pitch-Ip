@@ -38,7 +38,7 @@ def jobs():
     return render_template('jobs.html', jobs=jobs_pitch)
 
 
-@main.route('/new')
+@main.route('/new', methods=['GET', 'POST'])
 @login_required
 def new():
     pitch_form = PitchForm()
@@ -50,9 +50,9 @@ def new():
         category = pitch_form.category.data
         # category=category
         new_pitch = Pitch(title=title, body=body,
-                          author=author, category=category)
-        new_pitch.save_review()
-        return redirect(url_for('.index'))
+                          author=author, category=category, upvotes=0, downvotes=0)
+        new_pitch.save_pitches()
+        return redirect(url_for('main.index'))
 
     return render_template('new.html', pitch_form=pitch_form)
 
