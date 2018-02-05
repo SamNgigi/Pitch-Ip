@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, abort
 from . import main
 from .forms import UpdateProfile  # CommentForm
-from ..models import User  # Comment,
+from ..models import User, Pitch  # Comment,
 from flask_login import login_required
 from .. import db, photos
 # from ..pitches import get_pitches, get_pitch
@@ -12,22 +12,31 @@ def index():
     """
     Function that renders the index.html and its content
     """
+    pitches = Pitch.query.all()
+
+    return render_template('index.html', pitches=pitches)
 
 
-@main.route('/business/<category>')
-def business(category):
+@main.route('/business')
+def business():
     """
     Function that renders the index.html and its content
     """
+    business_pitch = Pitch.query.filter_by(category='business').all()
+
+    return render_template('business.html', business=business_pitch)
 
 
-@main.route('/jobs/<category>')
-def jobs(category):
+@main.route('/jobs')
+def jobs():
     """
     Function that renders the index.html and its content
     """
     # TODO: comiit all from data base. query by categoty
     # TODO: add simple mde to comment and add new pitch
+    jobs_pitch = Pitch.query.filter_by(category='jobs').all()
+
+    return render_template('jobs.html', jobs=jobs_pitch)
 
 
 @main.route('/update/<int:id>', methods=['POST'])

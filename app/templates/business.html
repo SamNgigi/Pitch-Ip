@@ -8,18 +8,7 @@
 {% block content %}
 <div class="container-fluid mt-3">
   <div class="row">
-    <div class="card">
-      <div class="card-header">
-        Category - {{pitch.category}}
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{pitch.title}}</h5>
-        <p class="card-text">{{pitch.body}}</p>
-        <p class="card-text"><small class="text-muted">{{pitch.author}}</small></p>
-        <a href="#" id="pitch{{pitch.id}}" class="btn btn-primary btn-lg" btn_id="{{(pitch.id)}}"><i class="far fa-hand-point-up mr-2"></i>{{pitch.upvotes}}</a>
-        <a href="#" id="pitch{{pitch.id}}" class="btn btn-primary btn-lg"btn_id="{{(pitch.id)}}"><i class="far fa-hand-point-down mr-2"></i>{{pitch.downvotes}}</a>
-      </div>
-    </div>
+      {{macro.displayPitchList(business)}}
   </div>
 </div>
 {% endblock %}
