@@ -9,8 +9,14 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sam:Sam@localhost/pitch_ip'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
+
+    # Simple mde configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLE_USE_CDN = True
+
+    @staticmethod
+    def init_app(app):
+        app
 
 
 class ProdConfig(Config):
