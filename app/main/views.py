@@ -51,7 +51,8 @@ def new():
         # category=category
         new_pitch = Pitch(title=title, body=body,
                           author=author, category=category, upvotes=0,
-                          downvotes=0)
+                          downvotes=0,
+                          users=current_user)
         new_pitch.save_pitches()
         return redirect(url_for('main.index'))
 

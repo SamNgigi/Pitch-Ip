@@ -20,7 +20,7 @@ class Pitch(db.Model):  # (db.Model)
     category = db.Column(db.String)
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
-    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
 
     def save_pitches(self):
@@ -45,14 +45,15 @@ class Pitch(db.Model):  # (db.Model)
                  author,
                  category,
                  upvotes,
-                 downvotes):
+                 downvotes,
+                 user):
         self.title = title
         self.body = body
         self.author = author
         self.category = category
         self.upvotes = upvotes
         self.downvotes = downvotes
-        # self.user = user
+        self.user = user
 
 
 class Comment(db.Model):  # (db.Model)
