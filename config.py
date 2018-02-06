@@ -24,7 +24,8 @@ class ProdConfig(Config):
     Child configurations with the Config passed in as a class.
     """
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    pass
+    DEBUG = False
+    # pass
 
 
 class TestConfig(Config):
