@@ -37,17 +37,17 @@
         // console.log(btn_id);
         var votes = $('#pitch'+ btn_id).text()
         // console.log(votes);
-        var int_votes = parseInt(votes)
-        var new_votes=voteClicks(int_votes).toString()
-        console.log(new_votes);
-        // console.log(voteClicks(int_votes));
+        int_votes = voteClicks(parseInt(votes))
+        console.log(int_votes)
+        str_votes = int_votes.toString()
         req = $.ajax({
           url: '/update',
-          type: 'POST',
-          data: {votes:votes}
+          type: 'get',
+          data: {jsdata:int_votes}
         });
         req.done(function(data){
-
+          new_votes=$('#pitch'+ btn_id).text(str_votes)
+          $('#pitch.pitch.id').html(data)
         });
       });
     });

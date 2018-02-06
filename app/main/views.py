@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, abort
 from . import main
-from .forms import PitchForm, CommentForm  # UpdateProfile
+from .forms import PitchForm, CommentForm, Vote  # UpdateProfile
 from ..models import User, Pitch, Comment
 from flask_login import login_required, current_user
 from .. import db, photos
@@ -62,6 +62,7 @@ def new():
 @login_required
 def comment(id):
     comment_form = CommentForm()
+    vote_radio = Vote()
     pitch = Pitch.query.get(id)
     if comment_form.validate_on_submit():
         title = comment_form.title.data
@@ -73,12 +74,19 @@ def comment(id):
         new_comment.save_comment()
         return redirect(url_for('main.index'))
 
-    return render_template('comment.html', comment_form=comment_form, pitch=pitch)
+    return render_template('comment.html',
+                           comment_form=comment_form,
+                           pitch=pitch,
+                           vote_radio=vote_radio)
 
 
-@main.route('/update/<int:id>', methods=['POST'])
-def update(id):
-    pass
+@main.route('/update', methods=['POST'])
+def update():
+    pitch = Pitch.query.get(id)
+    pitch.upvotes = request.args.get('jsdata')
+    pitch.downvotes = request.args.get('jsdata')
+
+    return render_template('button.html', pitch=pitch)
 
 
 @main.route('/user/<uname>')

@@ -13,6 +13,14 @@
             <p>{{pitch.body}}</p>
             <footer class="blockquote-footer"><cite title="Source Title">{{pitch.author}}</cite></footer>
           </blockquote>
+          <form action method="post" class='form' role='form'>
+            <div class="row mt-3">
+              {{vote_radio.rating.label}}
+            </div>
+            <div class="row form-check form-check-inline ">
+              {{vote_radio.hidden_tag()}} {{vote_radio.rating(class_='form-check-input')}}
+            </div>
+          </form>
         </div>
       </div>
     </div>
