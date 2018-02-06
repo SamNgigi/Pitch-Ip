@@ -34,7 +34,7 @@ class Pitch(db.Model):  # (db.Model)
 
     @classmethod
     def get_categories(cls, category):
-        pitch_cat = Pitch.query.filter_by(categoy=category)
+        pitch_cat = Pitch.query.filter_by(category=category)
         return pitch_cat
 
     all_pitches = []

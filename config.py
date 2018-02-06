@@ -33,7 +33,7 @@ class TestConfig(Config):
 
     To test out database relationship.
     """
-    pass
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://sam:Sam@localhost/pitch_ip'
 
 
 class DevConfig(Config):
