@@ -25,7 +25,7 @@ class ProdConfig(Config):
     """
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     # DEBUG = False
-    pass
+    # pass
 
 
 class TestConfig(Config):
