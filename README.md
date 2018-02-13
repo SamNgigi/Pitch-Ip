@@ -29,7 +29,7 @@ This is an app that allows users to view,submit & pitches based on categories
 * Python3.6
 
 ## Installation steps
-* $ git clone https://github.com/Kipngetich33/One-Minute-Pitch.git
+* $ git clone https://github.com/SamNgigi/Pitch-Ip/edit/master/README.md
 * $ cd One-Minute-Pitch
 * $ source virtual/bin/activate
 * Inside the manage.py module change the config_name parameter from 'production' to 'development' ie app = create_app('production') should be app = create_app('development')
